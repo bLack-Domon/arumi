@@ -1,0 +1,120 @@
+{% extends 'frame/main.html' %} {% load widget_tweaks %} {% block content %}
+<div class="col-12 mt-3">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Data Santri</h2>
+      <div class="card-tools">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item mr-1">
+            <a href="{% url 'add_data' %}" class="btn btn-block btn-primary"
+              ><i class="fas fa-plus"></i> Tambah Santri</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="{% url 'output' %}"
+              target="_blank"
+              class="btn btn-dark mb-2 float-right"
+              ><i class="fas fa-download"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form method="get">
+        <div class="row">
+          <div class="col-md-2 mb-2">
+            <p>Nomor Induk Santri:</p>
+            {{ filter.form.nis|add_class:"form-control" }}
+          </div>
+          <div class="col-md-2 mb-2">
+            <p>Nama Lengkap:</p>
+            {{ filter.form.nama_lengkap|add_class:"form-control" }}
+          </div>
+          <div class="col-md-2 mb-2">
+            <p>Gender:</p>
+            {{ filter.form.gender_santri|add_class:"form-control" }}
+          </div>
+          <div class="col-md-2 mb-2">
+            <p>Kota/Kabupaten:</p>
+            {{ filter.form.tempat_kelahiran|add_class:"form-control"}}
+          </div>
+          <div class="col-md-2 mb-2">
+            <p>Wilayah:</p>
+            {{ filter.form.wilayah|add_class:"form-control" }}
+          </div>
+          <div class="col-md-2 mt-4 mb-2">
+            <button class="btn btn-danger btn-block mt-3" type="submit">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="align-middle text-center">No.</th>
+            <th>NIS</th>
+            <th>Nama</th>
+            <th>Gender</th>
+            <th>Tetala</th>
+            <th>Alamat</th>
+            <th>Agama</th>
+            <th>Status Santri</th>
+            <th>Wilayah</th>
+            <th>Asal Sekolah</th>
+            <th>Tanggal Mondok</th>
+            <th>Ayah (Pekerjaan)</th>
+            <th>Ibu (Pekerjaan)</th>
+            <th class="align-middle text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dj in d_santri %}
+          <tr>
+            <td class="align-middle text-center">{{forloop.counter}}</td>
+            <td class="align-middle">{{dj.nis}}</td>
+            <td class="align-middle">{{dj.nama_lengkap}}</td>
+            <td class="align-middle">{{dj.gender_santri}}</td>
+            <td class="align-middle">
+              {{dj.tempat_kelahiran}}, {{dj.tgl_lahir|date:'d-F-Y'}}
+            </td>
+            <td class="align-middle">{{dj.alamat}}</td>
+            <td class="align-middle">{{dj.agama}}</td>
+            <td class="align-middle">{{dj.status_santri}}</td>
+            <td class="align-middle">{{dj.wilayah}}</td>
+            <td class="align-middle">{{dj.asal_sekolah}}</td>
+            <td class="align-middle">{{dj.tanggal_mondok}}</td>
+            <td class="align-middle">{{dj.ayah}} ({{ dj.pekerjaan_ayah }})</td>
+            <td class="align-middle">{{dj.ibu}} ({{dj.pekerjaan_ibu}})</td>
+            <td class="text-center">
+              <a href="{% url 'detail_data' dj.nis %}" class="btn btn-info mb-1"
+                >Detail
+              </a>
+              <a
+                href="{% url 'update_data' dj.nis %}"
+                class="btn btn-warning mb-1"
+                >Update
+              </a>
+              <a
+                href="{% url 'update_alumni' dj.nis %}"
+                class="btn btn-danger mb-1"
+                >Berhenti
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5" class="text-center">Data Santri Kosong</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock content %}

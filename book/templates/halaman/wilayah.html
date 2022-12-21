@@ -1,0 +1,96 @@
+{% extends 'frame/main.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="col-8 mt-3">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Data Wilayah</h2>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="align-middle text-center">No.</th>
+            <th>Nama Wilayah</th>
+            <th>Nama Kepala Wilayah</th>
+            <th class="align-middle text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dj in wilayah %}
+          <tr>
+            <td class="align-middle text-center">{{forloop.counter}}</td>
+            <td class="align-middle">{{dj.nama_wilayah}}</td>
+            <td class="align-middle">{{dj.nama_kepala}}</td>
+            <td class="text-center">
+              <a
+                href="{% url 'update_wilayah' dj.nama_wilayah %}"
+                class="btn btn-warning mb-1"
+                >Update
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center">Data Wilayah Kosong</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+<div class="col-4 mt-3">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Input Wilayah Baru</h2>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %} {{ form|crispy }}
+        <div class="form-group">
+          <label>Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="Nama Pengguna"
+          />
+          <label class="mt-3">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Kata Sandi"
+          />
+          <label class="mt-3">Repeat Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password2"
+            placeholder="Ulangi Kata Sandi"
+          />
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-sm-6 mt-2">
+            <input
+              type="submit"
+              class="btn btn-block btn-primary"
+              value="Save"
+            />
+          </div>
+          <div class="col-sm-6 mt-2">
+            <input
+              type="reset"
+              class="btn btn-block btn-danger"
+              value="Cancel"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock content %}

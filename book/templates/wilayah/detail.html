@@ -1,0 +1,632 @@
+{% extends 'wilayah/main.html' %} {% load static %} {% block content %}
+<div class="col-sm-12 mt-3">
+  <!-- Profile Image -->
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Detail Profil Santri</h2>
+      <div class="card-tools mr-auto">
+        <a href="{% url 'data_wil' %}" class="btn btn-block btn-danger mr-auto"
+          ><i class="fas fa-arrow-left mr-2"></i> Back</a
+        >
+      </div>
+    </div>
+    <div class="card-body box-profile">
+      <div class="row">
+        <div class="col-sm-8 mb-4">
+          <div class="card card-olive h-100">
+            <div class="card-header">
+              <h3 class="card-title">
+                <b>Identitas Santri</b>
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-5" style="margin-top: 100px">
+                  <div class="text-center">
+                    <img
+                      class="mb-1 mt-3"
+                      src="{{dj.profile_pic.url}}"
+                      alt="User profile picture"
+                      style="width: 275px"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-7">
+                  <hr />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Nomor Induk Santri</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.nis}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Nomor Induk Keluarga</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.nik}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Nama Lengkap</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.nama_lengkap}} ({{dj.nama_panggilan}})
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tempat, Tanggal Lahir</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.tempat_kelahiran}},
+                            {{dj.tgl_lahir|date:'d-F-Y'}}
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Jenis Kelamin</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.gender_santri}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Agama</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.agama}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tinggi Badan</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.tinggi_badan}} cm</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Golongan Darah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.golongan_darah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Alamat</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.alamat}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>No. Hp Orang Tua</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.telp}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Status Santri</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.status_santri}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Wilayah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.wilayah}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Anak Ke</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.anak_ke}}</h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-3"><b>Saudara Kandung</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.saudara_kandung}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Saudara Tiri</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.saudara_tiri}}</h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-3"><b>Saudara Angkat</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.saudara_angkat}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Status Anak</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.status_anak}}</h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-3"><b>Bahasa Sehari-hari</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.bahasa}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card card-olive h-60">
+            <div class="card-header">
+              <h3 class="card-title">
+                <b>Nama Asal Sekolah / Pondok</b>
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <hr />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Asal Sekolah / Pondok</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.asal_sekolah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Alamat Sekolah / Pondok</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.alamat_sekolah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Keterangan Status Sekolah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.keterangan_sekolah}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card-olive h-60">
+            <div class="card-header">
+              <h3 class="card-title">
+                <b>Nama Sekolah / Lembaga Pilihan</b>
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <hr />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Masuk Pondok Pada Kelas</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.kelas}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tanggal Mondok</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.tanggal_mondok|date:'d-F-Y'}}
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Nama Lembaga Pilihan</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.masuk_lembaga}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Alamat Lembaga Pilihan</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.alamat_lembaga}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-4 mb-4">
+          <div class="card card-olive h-100">
+            <div class="card-header">
+              <h3 class="card-title"><b>Ayah</b></h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Nama</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.ayah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tempat, Tanggal Lahir</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.tempat_kelahiran_ayah}},
+                            {{dj.tgl_lahir_ayah|date:'d-F-Y'}}
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pendidikan Ayah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pendidikan_ayah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pekerjaan Ayah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pekerjaan_ayah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Penghasilan Ayah</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.penghasilan_ayah}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Riwayat</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.riwayat_ayah}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-4">
+          <div class="card card-olive h-100">
+            <div class="card-header">
+              <h3 class="card-title"><b>Ibu</b></h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Nama</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.ibu}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tempat, Tanggal Lahir</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.tempat_kelahiran_ibu}},
+                            {{dj.tgl_lahir_ibu|date:'d-F-Y'}}
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pendidikan Ibu</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pendidikan_ibu}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pekerjaan Ibu</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pekerjaan_ibu}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Penghasilan Ibu</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.penghasilan_ibu}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Riwayat</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.riwayat_ibu}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-4">
+          <div class="card card-olive h-100">
+            <div class="card-header">
+              <h3 class="card-title"><b>Wali Santri</b></h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6><b>Nama</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.wali}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Tempat, Tanggal Lahir</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">
+                            {{dj.tempat_kelahiran_wali}}
+                            {{dj.tgl_lahir_wali|date:'d-F-Y'}}
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pendidikan Wali</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pendidikan_wali}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Pekerjaan Wali</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.pekerjaan_wali}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Penghasilan Wali</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.penghasilan_wali}}</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h6><b>Riwayat</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-1"><b>:</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="ml-2">{{dj.riwayat_wali}}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+{% endblock content %}

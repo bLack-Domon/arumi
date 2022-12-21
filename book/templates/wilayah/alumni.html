@@ -1,0 +1,70 @@
+{% extends 'wilayah/main.html' %} {% load widget_tweaks %} {% block content %}
+<div class="col-md-12 mt-3">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Data Alumni Santri</h2>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="align-middle text-center">No.</th>
+            <th>NIS</th>
+            <th>Nama</th>
+            <th>Gender</th>
+            <th>Tetala</th>
+            <th>Alamat</th>
+            <th>Agama</th>
+            <th>Status Santri</th>
+            <th>Wilayah</th>
+            <th>Asal Sekolah</th>
+            <th>Tanggal Mondok</th>
+            <th>Ayah (Pekerjaan)</th>
+            <th>Ibu (Pekerjaan)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dj in alumni %}
+          <tr>
+            <td class="align-middle text-center">{{forloop.counter}}</td>
+            <td class="align-middle">{{dj.nis}}</td>
+            <td class="align-middle">{{dj.nama_lengkap}}</td>
+            <td class="align-middle">{{dj.gender_santri}}</td>
+            <td class="align-middle">
+              {{dj.tempat_kelahiran}}, {{dj.tgl_lahir|date:'d-F-Y'}}
+            </td>
+            <td class="align-middle">{{dj.alamat}}</td>
+            <td class="align-middle">{{dj.agama}}</td>
+            <td class="align-middle">{{dj.status_santri}}</td>
+            <td class="align-middle">{{dj.wilayah}}</td>
+            <td class="align-middle">{{dj.asal_sekolah}}</td>
+            <td class="align-middle">{{dj.tanggal_mondok}}</td>
+            <td class="align-middle">{{dj.ayah}} ({{ dj.pekerjaan_ayah }})</td>
+            <td class="align-middle">{{dj.ibu}} ({{dj.pekerjaan_ibu}})</td>
+            <td class="text-center">
+              <a
+                href="{% url 'detail_data' dj.nis %}"
+                class="btn btn-block btn-info mb-1"
+                >Detail
+              </a>
+              <a
+                href="{% url 'update_alumni' dj.nis %}"
+                class="btn btn-danger btn-block mb-1"
+                >Edit
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="14" class="text-center">Data Alumni Santri Kosong</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock content %}

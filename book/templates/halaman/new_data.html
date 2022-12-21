@@ -1,0 +1,426 @@
+{% extends 'frame/main.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div class="col-md-12 mt-3">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h3 class="card-title">Pendaftaran Santri</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="mb-3">
+        <b>NB : * Tanda bintang 1 wajib diisi, ** Tanda bintang 2 opsional.</b>
+      </div>
+      <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card card-olive h-100">
+                <div class="card-header">
+                  <h3 class="card-title">Identitas Santri</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nomor Induk Santri*</label>
+                        {{form.nis}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Nama Lengkap*</label>
+                        {{form.nama_lengkap}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nama Panggilan*</label>
+                        {{form.nama_panggilan}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Jenis Kelamin*</label>
+                        {{form.gender_santri}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nomor Induk Keluarga*</label>
+                        {{form.nik}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Kota Kelahiran*</label>
+                        {{form.tempat_kelahiran}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Tanggal Lahir*</label>
+                        {{form.tgl_lahir}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Alamat*</label>
+                        {{form.alamat}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Agama*</label>
+                        {{form.agama}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Anak Ke*</label>
+                        {{form.anak_ke}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Saudara Kandung*</label>
+                        {{form.saudara_kandung}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Saudara Tiri**</label>
+                        {{form.saudara_tiri}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Saudara Angkat**</label>
+                        {{form.saudara_angkat}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Status Anak*</label>
+                        {{form.status_anak}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Bahasa Sehari-hari**</label>
+                        {{form.bahasa}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Tinggi Badan**</label>
+                        {{form.tinggi_badan}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Berat Badan**</label>
+                        {{form.berat_badan}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Golongan Darah**</label>
+                        {{form.golongan_darah}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Wilayah*</label>
+                        {{form.wilayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Status Santri*</label>
+                        {{form.status_santri}}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>No. Hp Orangtua*</label>
+                        {{form.telp}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">{{ form.profile_pic }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-olive h-100">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    Asal Sekolah / Pondok & Pilihan Sekolah
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Asal Sekolah*</label>
+                        {{form.asal_sekolah}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Alamat Sekolah*</label>
+                        {{form.alamat_sekolah}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Keterangan Sekolah*</label>
+                        {{form.keterangan_sekolah}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Tanggal Mondok*</label>
+                        {{form.tanggal_mondok}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Masuk di Kelas*</label>
+                        {{form.kelas}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Masuk Lembaga / Sekolah*</label>
+                        {{form.masuk_lembaga}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Alamat Lembaga / Sekolah*</label>
+                        {{form.alamat_lembaga}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mt-3">
+              <div class="card card-olive">
+                <div class="card-header">
+                  <h3 class="card-title">Identitas Orang Tua atau Wali</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nama Ayah:</label>
+                        {{form.ayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Kota Kelahiran:</label>
+                        {{form.tempat_kelahiran_ayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Tanggal Lahir:</label>
+                        {{form.tgl_lahir_ayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        {{form.pekerjaan_ayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendidikan:</label>
+                        {{form.pendidikan_ayah}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendapatan Perbulan:</label>
+                        {{form.penghasilan_ayah}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Riwayat:</label>
+                        {{form.riwayat_ayah}}
+                      </div>
+                    </div>
+                  </div>
+                  <hr
+                    style="
+                      height: 3px;
+                      border: none;
+                      color: #3d9970;
+                      background-color: #3d9970;
+                    "
+                  />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nama Ibu:</label>
+                        {{form.ibu}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Kota Kelahiran:</label>
+                        {{form.tempat_kelahiran_ibu}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Tanggal Lahir:</label>
+                        {{form.tgl_lahir_ibu}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        {{form.pekerjaan_ibu}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendidikan:</label>
+                        {{form.pendidikan_ibu}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendapatan Perbulan:</label>
+                        {{form.penghasilan_ibu}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Riwayat:</label>
+                        {{form.riwayat_ibu}}
+                      </div>
+                    </div>
+                  </div>
+                  <hr
+                    style="
+                      height: 3px;
+                      border: none;
+                      color: #3d9970;
+                      background-color: #3d9970;
+                    "
+                  />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Nama Wali:</label>
+                        {{form.wali}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Kota Kelahiran:</label>
+                        {{form.tempat_kelahiran_wali}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Tanggal Lahir:</label>
+                        {{form.tgl_lahir_wali}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        {{form.pekerjaan_wali}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendidikan:</label>
+                        {{form.pendidikan_wali}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Pendapatan Perbulan:</label>
+                        {{form.penghasilan_wali}}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Riwayat:</label>
+                        {{form.riwayat_wali}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-sm-2 mb-2 mt-3">
+              <input
+                type="submit"
+                class="btn btn-block btn-primary"
+                value="Save"
+              />
+            </div>
+            <div class="col-sm-2 mb-2 mt-3">
+              <a class="btn btn-block btn-danger" href="{% url 'data' %}">
+                Cancel
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} EndBlock Django {% endcomment %} {% endblock content %}

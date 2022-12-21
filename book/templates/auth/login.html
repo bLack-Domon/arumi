@@ -1,0 +1,113 @@
+{% load static %} {% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'entrypage/fonts/icomoon/style.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'entrypage/css/owl.carousel.min.css' %}"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'entrypage/css/bootstrap.min.css' %}"
+    />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'entrypage/css/style.css' %}" />
+
+    <title>{{judul}}</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" style="margin-top: 120px">
+            <img
+              src="{% static 'media/entry.png' %}"
+              alt="Image"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-6 contents" style="margin-top: 130px">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="mb-4 text-center">
+                  <h3>PP. Jalaluddin Ar-Rumi</h3>
+                  <h6 class="mb-4">Buku Induk Santriwan & Santriwati</h6>
+                </div>
+                {% if messages %} {% for message in messages %}
+                <div
+                  class="alert alert-warning alert-dismissible fade show"
+                  role="alert"
+                >
+                  {{message}}
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endfor %} {% endif %}
+                <form action="#" method="post">
+                  {% csrf_token %}
+                  <div class="form-group first">
+                    <label for="username">Username</label>
+                    {% render_field form.username class+="form-control" %}
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                    {% render_field form.password class+="form-control" id+="myInput" %}
+                  </div>
+                  <input type="checkbox" onclick="myFunction()" /> Show Password
+                  <input
+                    type="submit"
+                    value="Log In"
+                    class="btn btn-block btn-primary"
+                    style="margin-top: 20px"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+
+    <script src="{% static 'entrypage/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'entrypage/js/popper.min.js' %}"></script>
+    <script src="{% static 'entrypage/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'entrypage/js/main.js' %}"></script>
+  </body>
+</html>

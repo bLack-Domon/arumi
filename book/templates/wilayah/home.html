@@ -1,0 +1,158 @@
+{% extends 'wilayah/main.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static '/dist/clndr/css/styles.css' %}" />
+
+<link rel="stylesheet" href="{% static '/dist/clndr/src/calendarjs.css' %}" />
+<script src="{% static '/dist/clndr/src/calendarjs.js' %}"></script>
+
+<div class="col-lg-3 col-6 mt-3">
+  <!-- small box -->
+  <div class="small-box bg-info">
+    <div class="inner">
+      <h3>{{ total }}</h3>
+
+      <p>Total Santri Putra & Putri</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-users"></i>
+    </div>
+    <a href="{% url 'data' %}" class="small-box-footer"
+      >More info <i class="fas fa-arrow-circle-right"></i
+    ></a>
+  </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-6 mt-3">
+  <!-- small box -->
+  <div class="small-box bg-success">
+    <div class="inner">
+      <h3>{{ putra }}</h3>
+
+      <p>Total Santri Putra</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-male"></i>
+    </div>
+    <a href="#" class="small-box-footer"
+      >More info <i class="fas fa-arrow-circle-right"></i
+    ></a>
+  </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-6 mt-3">
+  <!-- small box -->
+  <div class="small-box bg-warning">
+    <div class="inner">
+      <h3>{{ putri }}</h3>
+
+      <p>Total Santri Putri</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-female"></i>
+    </div>
+    <a href="#" class="small-box-footer"
+      >More info <i class="fas fa-arrow-circle-right"></i
+    ></a>
+  </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-6 mt-3">
+  <!-- small box -->
+  <div class="small-box bg-danger">
+    <div class="inner">
+      <h3>{{ alumni }}</h3>
+
+      <p>Total Alumni Santri</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-user-graduate"></i>
+    </div>
+    <a href="#" class="small-box-footer"
+      >More info <i class="fas fa-arrow-circle-right"></i
+    ></a>
+  </div>
+</div>
+<!-- ./col -->
+
+<div class="col-sm-8 mt-2">
+  <div class="card card-olive card-outline">
+    <div class="card-header">
+      <h2 class="card-title mt-2">Panduan Penggunaan Buku Induk</h2>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <ul>
+            <li>
+              <h5><b>Menu Beranda</b></h5>
+              <p class="text-justify">
+                Dalam Menu Beranda berisikan panduan singkat penggunaan aplikasi
+                buku induk. Dengan fungsi-fungsi yang telah disesuaikan untuk
+                kebutuhan pengolahan data santri di PP. Jalaluddin Ar-Rumi Jati
+                Sari Jember.
+              </p>
+            </li>
+            <li>
+              <h5><b>Menu Data Santri</b></h5>
+              <p class="text-justify">
+                Menu Data Santri menjadi pusat informasi yang dikelola dan
+                ditampilkan dalam bentuk daftar tabel agar mudah untuk dibaca.
+                Pengelola data dalam hal ini adalah Admin, pada menu ini admin
+                juga dapat melakukan penyalinan data ke dalam bentuk excel untuk
+                keperluan lainnya.
+              </p>
+              <ol class="mb-3">
+                <li>
+                  <b>Tambah Santri</b>: Submenu yang berada pada Menu Data
+                  Santri untuk melakukan pendaftaran santri baru.
+                </li>
+                <li>
+                  <b>Detail Santri</b>: Submenu yang berada pada Menu Data
+                  Santri untuk melihat secara detail profil santri.
+                </li>
+                <li>
+                  <b>Edit Santri</b>: Submenu yang berada pada Menu Data Santri
+                  untuk merubah atau mengupdate data santri.
+                </li>
+              </ol>
+            </li>
+            <li>
+              <h5><b>Menu Logout</b></h5>
+              <p class="text-justify">
+                Menu untuk keluar dari sistem dan mengakhiri user yang sedang
+                aktif.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+<div class="col-sm-4 mt-2">
+  <div id="myCalendar" style="max-width: 800px"></div>
+</div>
+
+<script>
+  var calendarInstance = new calendarJs("myCalendar", {
+    exportEventsEnabled: false,
+    manualEditingEnabled: false,
+    showTimesInMainCalendarEvents: false,
+    visibleDays: [0, 1, 2, 3, 4, 5, 6],
+    showExtraToolbarButtons: false,
+  });
+
+  function daysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate();
+  }
+
+  function setCurrentDisplayDate() {
+    var newDate = new Date();
+    newDate.setMonth(newDate.getMonth() + 3);
+
+    calendarInstance.setCurrentDisplayDate(newDate);
+  }
+</script>
+
+{% endblock content %}
